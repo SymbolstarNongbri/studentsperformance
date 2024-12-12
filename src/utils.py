@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 
 from sklearn.metrics import r2_score
+from sklearn.model_selection import GridSearchCV
 
 import dill
 
@@ -26,7 +27,7 @@ def save_object(file_path, obj):
     except Exception as e:
         raise CustomException(e,sys)
 
-def evaluate_models(X_train,y_train,X_test,y_test,models):
+def evaluate_models(X_train,y_train,X_test,y_test,models,params):
     '''
     ::::  This is the function to evaluate models  ::::
     '''
@@ -39,8 +40,14 @@ def evaluate_models(X_train,y_train,X_test,y_test,models):
         logging.info('TRAINING: Evaluating Best Model')
         for i in range(models_len):
             model=list(models.values())[i]
+            para=params[list(models.keys())[i]]
 
-            # Train model
+            logging.info(f"-----> CV - {model} ")
+            gs = GridSearchCV(model,para,cv=3)
+            g_res=gs.fit(X_train,y_train)
+            logging.info(g_res.best_params_)
+
+            model.set_params(**g_res.best_params_)
             model.fit(X_train,y_train)
 
             y_train_pred=model.predict(X_train)

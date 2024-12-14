@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<title>
+    Students Performance
+</title>
+<head>
+
+</head>
+
+<body>
+<div class="login">
+    <form action='/predictdata' method="POST">
+        <h1>
+            <legend>Students Performance Prediction</legend>
+        </h1>
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <select class="form-control" name="gender" placeholder="Gender" requiured>
+                <option class="placeholder" selected disabled value="">Selelct Gender</option>
+                <option value="male">
+                    Male
+                </option>
+                <option value="Female">
+                    Female
+                </option>    
+            </select>
+        </div>
+         <div class="ml-3">
+            <label class="form-label">Race or Ethnicity</label> 
+            <select class="form-control" name="ethnicity" placeholder="Race or Ethnicity" required>
+                <option class="placeholder" selected disabled value=""> Select Ethnicity</option>
+                <option value="group A">
+                    group A
+                </option>
+                <option value="group B">
+                    group B
+                </option>
+                <option value="group C">
+                    group C
+                </option>
+                <option value="group D">
+                    group D
+                </option>
+                <option value="group E">
+                    group E
+                </option>
+            </select>
+         </div>
+         <div class="ml-3">
+            <label class="form-label">Parental Education</label> 
+            <select class="form-control" name="parental_education" placeholder="Parental Education" required>
+                <option class="placeholder" selected disabled value=""> Select Parental Education</option>
+                <option value="bachelor's degree">
+                    Bachelor
+                </option>
+                <option value="some college">
+                    College
+                </option>
+                <option value="master's degree">
+                    Master
+                </option>
+                <option value="associate's degree">
+                    Associate
+                </option>
+                <option value="high school">
+                    High School
+                </option>
+                <option value="some high school">
+                    Some High School
+                </option>
+            </select>
+         </div>
+         <div class="mb-3">
+            <label class="form-label">Lunch</label>
+            <select class="form-control" name="lunch" placeholder="Lunch" requiured>
+                <option class="placeholder" selected disabled value="">Selelct Lunch</option>
+                <option value="standard">
+                    Standard
+                </option>
+                <option value="free/reduced">
+                    Free
+                </option>    
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Test Preparation</label>
+            <select class="form-control" name="test_preparation" placeholder="Test Preparation" requiured>
+                <option class="placeholder" selected disabled value="">Selelct Test Preparation</option>
+                <option value="none">
+                    None
+                </option>
+                <option value="completed">
+                    Completed
+                </option>    
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="form-label">Reading Score</label>
+            <input type="number" id="reading_score" name="reading_score" min="0" max="100">
+        </div>
+        <div class="mb-3">
+            <label for="form-label">Writing Score</label>
+            <input type="number" id="writing_score" name="writing_score" min="0" max="100">
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Predict Math Scores" requiured/>
+        </div>
+    </form>
+
+    <h2>
+        The Prediction Math Score is {{ results }}
+    </h2>
+</div>
+</body>
+</html>
